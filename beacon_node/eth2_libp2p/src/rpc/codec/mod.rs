@@ -2,7 +2,7 @@ pub(crate) mod base;
 pub(crate) mod ssz_snappy;
 
 use self::base::{BaseInboundCodec, BaseOutboundCodec};
-use self::ssz_snappy::{SSZSnappyInboundCodec, SSZSnappyOutboundCodec};
+pub use self::ssz_snappy::{SSZSnappyInboundCodec, SSZSnappyOutboundCodec};
 use crate::rpc::protocol::RPCError;
 use crate::rpc::{RPCCodedResponse, RPCRequest};
 use libp2p::bytes::BytesMut;

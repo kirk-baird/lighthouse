@@ -1,0 +1,45 @@
+
+[package]
+name = "eth2_libp2p-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = { version = "0.4", features = ["arbitrary-derive"] }
+tokio = { version = "1.1.0", features = ["time", "macros"] }
+tokio-util = { version = "0.6.2", features = ["codec", "compat", "time"] }
+types = { path =  "../../../consensus/types" }
+
+[dependencies.eth2_libp2p]
+path = ".."
+
+[dependencies.libp2p]
+version = "0.35.1"
+default-features = false
+features = ["websocket", "identify", "mplex", "yamux", "noise", "gossipsub", "dns", "tcp-tokio"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_ssz_snappy_codec"
+path = "fuzz_targets/fuzz_ssz_snappy_codec.rs"
+
+[[bin]]
+name = "fuzz_ssz_snappy_codec_out"
+path = "fuzz_targets/fuzz_ssz_snappy_codec_out.rs"
+
+[patch]
+[patch.crates-io]
+tree_hash = { path = "../../../consensus/tree_hash" }
+tree_hash_derive = { path = "../../../consensus/tree_hash_derive" }
+eth2_ssz = { path = "../../../consensus/ssz" }
+eth2_ssz_derive = { path = "../../../consensus/ssz_derive" }
+eth2_ssz_types = { path = "../../../consensus/ssz_types" }
+eth2_hashing = { path = "../../../crypto/eth2_hashing" }

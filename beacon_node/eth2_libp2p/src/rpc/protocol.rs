@@ -11,6 +11,7 @@ use crate::rpc::{
 use futures::future::BoxFuture;
 use futures::prelude::{AsyncRead, AsyncWrite};
 use futures::{FutureExt, SinkExt, StreamExt};
+use libfuzzer_sys::arbitrary;
 use libp2p::core::{InboundUpgrade, OutboundUpgrade, ProtocolName, UpgradeInfo};
 use ssz::Encode;
 use ssz_types::VariableList;
@@ -95,7 +96,7 @@ const TTFB_TIMEOUT: u64 = 5;
 const REQUEST_TIMEOUT: u64 = 15;
 
 /// Protocol names to be used.
-#[derive(Debug, Clone, Copy)]
+#[derive(arbitrary::Arbitrary, Debug, Clone, Copy)]
 pub enum Protocol {
     /// The Status protocol name.
     Status,

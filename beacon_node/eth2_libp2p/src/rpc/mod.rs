@@ -31,10 +31,10 @@ pub use methods::{
 };
 pub use protocol::{Protocol, RPCError};
 
-pub(crate) mod codec;
+pub mod codec;
 mod handler;
 pub mod methods;
-mod protocol;
+pub mod protocol;
 mod rate_limiter;
 
 /// RPC events sent from Lighthouse.

@@ -23,6 +23,7 @@ error-chain = "0.12.4"
 dirs = "3.0.1"
 fnv = "1.0.7"
 lazy_static = "1.4.0"
+libfuzzer-sys = { version = "0.4", features = ["arbitrary-derive"] }
 lighthouse_metrics = { path = "../../common/lighthouse_metrics" }
 smallvec = "1.6.1"
 tokio-io-timeout = "1.1.1"
